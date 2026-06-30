@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /embed
+Disallow: /models
+Disallow: /ux-test
+Disallow: /v2-test
+Disallow: /v2-diagnostic
+Disallow: /play
+
+Sitemap: https://www.wario.style/sitemap.xml
