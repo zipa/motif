@@ -1173,3 +1173,13 @@
 .v2-disclaimer p { margin: 0 0 8px; }
 .v2-disclaimer p:last-child { margin-bottom: 0; }
 .v2-disclaimer strong { color: var(--gb-darkest); }
+
+/* iOS Safari zooms the page when a focused text field is under 16px and
+   never zooms back out after search. Touch screens get 16px fields;
+   Press Start 2P is an 8px-grid face, so 16px stays on the pixel grid.
+   !important so it also beats the inline-styled share fallback input. */
+@media (hover: none) and (pointer: coarse) {
+    input[type="text"] {
+        font-size: 16px !important;
+    }
+}
