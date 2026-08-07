@@ -1,5 +1,16 @@
+# Content Signals: https://contentsignals.org/
+# As a condition of accessing this website, you agree to these content signals:
+# (a) content-signal=yes means allowed for that use
+# (b) content-signal=no means not allowed for that use
+# (c) omitting a content-signal means no preference is expressed
+#
+# search:   building a search index and returning hyperlinks/excerpts (not AI summaries)
+# ai-input: using content as live input to AI (e.g. RAG, grounding, real-time answers)
+# ai-train: training or fine-tuning AI models on this content
+
 User-agent: *
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Disallow: /api/
 Disallow: /embed
 Disallow: /models
