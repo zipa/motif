@@ -27,6 +27,7 @@
   <meta name="twitter:image" content="https://www.wario.style/warioX.png" />
 
   <link rel="stylesheet" href="/src/styles/wario.css" />
+  <link rel="stylesheet" href="/src/styles/landing.css" />
 </head>
 <body>
   <div class="container">
@@ -107,6 +108,16 @@
           <input id="shareFallbackInput" type="text" readonly style="width:100%; padding:8px; font-size:8px; font-family:'Press Start 2P', monospace; background:var(--gb-darkest); color:var(--gb-lightest); border:2px solid var(--gb-light);" />
         </div>
       </div>
+    </div>
+
+    <div class="landing-section" id="faq">
+      <h2>FAQ</h2>
+      <p><strong>What's different from v1?</strong><br>v1 is tuned to sound good on anything and cheats a little — it's closer to a SNES sound card. v2 models the actual Game Boy chip (Sharp LR35902): two pulse channels with 12.5/25/50/75% duty cycles, a 32-step 4-bit wavetable channel, and a 15-bit LFSR noise channel.</p>
+      <p><strong>Why does it sound rougher?</strong><br>Four voices, 4-bit wavetables and hardware-style noise are what the DMG had. Dense MIDIs get thinned hard. Some low-mid distortion in the noise channel is a known work-in-progress.</p>
+      <p><strong>Can I save the result?</strong><br>Yes — Save Audio gives you a WAV. Copy link / Share to X carry the song so others hear the same version.</p>
+      <p><strong>Can I upload my own MIDI here?</strong><br>Not on v2 yet. Use <a href="/">v1</a> for local uploads, or search a song title above.</p>
+      <p><strong>Is it running on a server?</strong><br>No. Search finds a public MIDI; everything else — parsing, synthesis, WAV export — happens in your browser.</p>
+      <p><strong>Where's the code?</strong><br><a href="https://github.com/b1rdmania/motif" target="_blank" rel="noopener noreferrer">github.com/b1rdmania/motif</a>. Bugs and duty-cycle nitpicks welcome as issues.</p>
     </div>
 
   </div>

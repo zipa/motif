@@ -54,7 +54,21 @@
       "src": "/v2-diagnostic",
       "dest": "/v2-diagnostic.html"
     },
-    { "handle": "filesystem" },
+    {
+      "src": "/midi-to-8-bit",
+      "dest": "/midi-to-8-bit.html"
+    },
+    {
+      "src": "/8-bit-synth-online",
+      "dest": "/8-bit-synth-online.html"
+    },
+    {
+      "src": "/wario-8-bit-music",
+      "dest": "/wario-8-bit-music.html"
+    },
+    {
+      "handle": "filesystem"
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"

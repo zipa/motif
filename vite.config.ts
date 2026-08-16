@@ -24,6 +24,10 @@ export default defineConfig({
         // V2 authentic Game Boy engine (experimental, unlinked from the main
         // app — shipped so people can try it from the open issue).
         v2: resolve(__dirname, 'v2.html'),
+        // SEO landing pages
+        midi_to_8_bit: resolve(__dirname, 'midi-to-8-bit.html'),
+        synth_online: resolve(__dirname, '8-bit-synth-online.html'),
+        wario_8_bit: resolve(__dirname, 'wario-8-bit-music.html'),
         // Note: internal test/diagnostic pages (ux-test, v2-test,
         // v2-diagnostic) stay out of the production build. The .html files
         // remain in the repo for local development; add them back to ship.

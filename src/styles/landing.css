@@ -1,0 +1,72 @@
+/* Landing pages (SEO) — reuse wario.css tokens, add prose layout */
+.landing-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: calc(var(--spacing-unit) * 2) 0;
+    font-size: 8px;
+    color: var(--gb-medium);
+}
+.landing-nav a { color: var(--gb-dark); }
+.landing-cta {
+    display: flex;
+    justify-content: center;
+    margin: calc(var(--spacing-unit) * 3) 0;
+}
+.landing-cta a {
+    display: inline-block;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 10px;
+    padding: 14px 20px;
+    border: var(--pixel-border) solid var(--gb-darkest);
+    background: var(--gb-dark);
+    color: var(--gb-lightest);
+    box-shadow:
+        inset -3px -3px 0 var(--gb-darkest),
+        inset 3px 3px 0 var(--gb-medium);
+}
+.landing-cta a:hover { background: var(--gb-darkest); }
+.landing-section {
+    border: var(--pixel-border) solid var(--gb-dark);
+    background: var(--gb-dark);
+    padding: calc(var(--spacing-unit) * 2);
+    margin: calc(var(--spacing-unit) * 2) 0;
+}
+.landing-section h2 {
+    margin: 0 0 10px 0;
+    font-size: 10px;
+    font-weight: normal;
+    color: var(--gb-lightest);
+    text-transform: uppercase;
+}
+.landing-section p, .landing-section li {
+    margin: 0 0 8px 0;
+    font-size: 8px;
+    line-height: 2;
+    color: var(--gb-light);
+}
+.landing-section ul, .landing-section ol { padding-left: 16px; margin: 0; }
+.landing-section a { color: var(--gb-lightest); }
+.landing-section strong { color: var(--gb-lightest); font-weight: normal; }
+.landing-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+.landing-links a {
+    display: block;
+    text-decoration: none;
+    border: 2px solid var(--gb-medium);
+    background: var(--gb-darkest);
+    color: var(--gb-lightest);
+    padding: 10px;
+    font-size: 8px;
+    line-height: 1.8;
+}
+.landing-links a:hover { border-color: var(--gb-lightest); }
+.landing-links a span { display: block; color: var(--gb-light); }
+@media (min-width: 600px) {
+    .landing-section p, .landing-section li, .landing-nav, .landing-links a { font-size: 9px; }
+}
