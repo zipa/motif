@@ -27,13 +27,13 @@
   <meta name="twitter:image" content="https://www.wario.style/warioX.png" />
 
   <link rel="stylesheet" href="/src/styles/wario.css" />
-  <link rel="stylesheet" href="/src/styles/landing.css" />
 </head>
 <body>
   <div class="container">
     <div class="hero">
       <div class="hero-top">
         <h1>WARIO SYNTH <span class="version-tag">v2 beta</span></h1>
+        <button id="faqBtnTop" class="faq-link" type="button">FAQ</button>
       </div>
       <div class="engine-tabs">
         <a id="v1Tab" href="/" class="engine-tab">v1</a>
@@ -110,16 +110,58 @@
       </div>
     </div>
 
-    <div class="landing-section" id="faq">
-      <h2>FAQ</h2>
-      <p><strong>What's different from v1?</strong><br>v1 is tuned to sound good on anything and cheats a little — it's closer to a SNES sound card. v2 models the actual Game Boy chip (Sharp LR35902): two pulse channels with 12.5/25/50/75% duty cycles, a 32-step 4-bit wavetable channel, and a 15-bit LFSR noise channel.</p>
-      <p><strong>Why does it sound rougher?</strong><br>Four voices, 4-bit wavetables and hardware-style noise are what the DMG had. Dense MIDIs get thinned hard. Some low-mid distortion in the noise channel is a known work-in-progress.</p>
-      <p><strong>Can I save the result?</strong><br>Yes — Save Audio gives you a WAV. Copy link / Share to X carry the song so others hear the same version.</p>
-      <p><strong>Can I upload my own MIDI here?</strong><br>Not on v2 yet. Use <a href="/">v1</a> for local uploads, or search a song title above.</p>
-      <p><strong>Is it running on a server?</strong><br>No. Search finds a public MIDI; everything else — parsing, synthesis, WAV export — happens in your browser.</p>
-      <p><strong>Where's the code?</strong><br><a href="https://github.com/b1rdmania/motif" target="_blank" rel="noopener noreferrer">github.com/b1rdmania/motif</a>. Bugs and duty-cycle nitpicks welcome as issues.</p>
-    </div>
 
+  </div>
+
+    <div id="faqModalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="faqTitle">
+      <div class="modal" role="document">
+          <header>
+              <h3 id="faqTitle">FAQ</h3>
+              <div class="spacer"></div>
+              <button id="faqCloseBtn" type="button">Close</button>
+          </header>
+          <main>
+              <div class="faq-grid">
+                  <div class="faq-item">
+                      <h4>How it works</h4>
+                      <p>Search a song or upload your own MIDI, pick a source, hit Generate. The Wario Synthesis Engine analyses the MIDI and resynthesises it with Web Audio oscillators into a chunky 8-bit chiptune. (Honestly it's closer to a SNES than a Game Boy — the <strong>v2 beta</strong> tab goes for the real Game Boy chip.) All processing runs in your browser.</p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>What's the "v2 beta" tab?</h4>
+                      <p>An experimental engine that goes for the actual Game Boy sound chip (the Sharp LR35902): real pulse, wave and noise channels. It's a rough work in progress, so v1 stays the default — but try it from the <strong>v2 beta</strong> tab up top.</p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>Can I upload my own MIDI?</h4>
+                      <p>Yes. Use <strong>Upload MIDI</strong> next to Search and pick a <code>.mid</code> or <code>.midi</code> file from your device. It is parsed locally in your browser — nothing is uploaded to our servers.</p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>Can I save the generated version?</h4>
+                      <p>After Generate finishes, use <strong>Save Audio</strong> (WAV) or <strong>Save MIDI</strong> to download the Game Boy-style result.</p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>Can I share my result?</h4>
+                      <p>Yes — if you used <strong>Search</strong> and picked an online MIDI source, <strong>Copy link</strong> and <strong>Share to X</strong> appear after Generate. They create a link others can open at wario.style/play.</p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>Why can't I share an uploaded MIDI?</h4>
+                      <p>Share links need a fetchable online MIDI URL. Files you upload stay on your device only, so Copy link and Share to X are hidden for those — you can still play, generate, and export them.</p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>Why "Enable Audio" on iPhone?</h4>
+                      <p>Apple blocks sound until you tap something. Hit the button once and you're good. Still silent? Check your ringer switch.</p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>About</h4>
+                      <p>A non-commercial project by <a href="https://x.com/b1rdmania" target="_blank" rel="noopener noreferrer">@b1rdmania</a> for lols. Please don't sue me. Built with Claude Code.</p>
+                      <p style="margin-top: 8px;"><a href="https://github.com/b1rdmania/motif" target="_blank" rel="noopener noreferrer">GitHub repo</a></p>
+                  </div>
+                  <div class="faq-item">
+                      <h4>Ps. I love Claude Code.</h4>
+                      <img src="/wario.png" alt="Wario moment" style="margin-top: 8px; max-width: 100%; opacity: 0.85;" />
+                  </div>
+              </div>
+          </main>
+      </div>
   </div>
 
   <div class="footer-mascot">
@@ -154,6 +196,17 @@
     const btnPlay = document.getElementById('btn-play');
     const btnStop = document.getElementById('btn-stop');
     const v1Tab = document.getElementById('v1Tab');
+
+    // FAQ modal — same markup/behaviour as v1.
+    const faqBtnTop = document.getElementById('faqBtnTop');
+    const faqBackdrop = document.getElementById('faqModalBackdrop');
+    const faqCloseBtn = document.getElementById('faqCloseBtn');
+    const openFaq = () => { faqBackdrop.classList.add('open'); faqCloseBtn.focus(); };
+    const closeFaq = () => { faqBackdrop.classList.remove('open'); };
+    faqBtnTop?.addEventListener('click', openFaq);
+    faqCloseBtn?.addEventListener('click', closeFaq);
+    faqBackdrop?.addEventListener('click', (e) => { if (e.target === faqBackdrop) closeFaq(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFaq(); });
 
     const progressRow = document.getElementById('progress-row');
     const progressFill = document.getElementById('play-progress-fill');
